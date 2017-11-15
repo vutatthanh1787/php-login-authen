@@ -1,0 +1,62 @@
+	body {
+		margin:0;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
+*:focus {
+    outline: none;
+}
+a{text-decoration: none !important;}
+
+	#calendar {
+		max-width: 900px;
+		margin: 0 auto;
+                margin-top:8px;
+	}
+    label, input { display:block; }
+    input.text {margin:5px; width:95%; padding: .4em;}
+    select{margin:5px; width:95%; padding: .4em;background: transparent;border-radius: 2px;}
+    fieldset { padding:0; border:0; margin-top:25px; }
+.ui-menu { 
+    overflow: hidden;
+}
+.ui-menu .ui-menu {
+    overflow: visible !important;
+}
+.ui-menu > li { 
+    float: left;
+    display: block;
+    width: auto !important;
+}
+.ui-menu ul li {
+    display:block;
+    float:none;
+}
+.ui-menu ul li ul {
+    left:120px !important;
+    width:100%;
+}
+.ui-menu ul li ul li {
+    width:auto;
+}
+.ui-menu ul li ul li a {
+    float:left;
+}
+.ui-menu > li {
+    margin: 5px 5px !important;
+    padding: 0 0 !important;
+}
+.ui-menu > li > a { 
+    float: left;
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+.ui-menu .ui-menu-icon { 
+    margin-top: 0.3em !important;
+}
+.ui-menu .ui-menu .ui-menu li { 
+    float: left;
+    display: block;
+}
