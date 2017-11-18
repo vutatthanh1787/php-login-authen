@@ -1,9 +1,8 @@
 <?php //::::::::: HANDLE LOGIN AND LOG OUT :::::::::::::
 define('AJAX_REQUEST', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
-if(!AJAX_REQUEST) {die();}
+if(!AJAX_REQUEST) {die('11111111');}
 header('Content-Type: application/json');
 require_once('func.php');
-
 $msg = "Error";
 $page = "";
 $buttonSelect = $_POST['buttonSelect'];
@@ -11,16 +10,16 @@ $pass = false;
 
 //login authentication
 if($buttonSelect == 300){
-
+	//die('111');
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	
 	try {
 	    $db = pdoConnect();
-	    $sql = $db->prepare("SELECT `id`,`username`, `password`, `groupid` FROM {$db_table_prefix}users WHERE username = ? ");
+	    $sql = $db->prepare("SELECT `id`,`username`, `password`, `groupid` FROM users WHERE username = ? ");
 		$sql->execute(array($username));
 		
-		if ($row=$sql->fetch(PDO::FETCH_OBJ)){
+		if ($row = $sql->fetch(PDO::FETCH_OBJ)){
 		
 			//if username is correct than check password
 			if (version_compare(phpversion(), "5.5.0", ">=")) { 
@@ -28,7 +27,7 @@ if($buttonSelect == 300){
                 if (password_verify($password, $row->password)){$pass = true;}else{$pass = false;}
 			}else{
 				//for older php versions
-                if(crypt($password,$row->password)== $row->password){$pass = true;}else{$pass = false;}
+                if(crypt($password, $row->password) == $row->password){$pass = true;}else{$pass = false;}
 			}
 			
 			if($pass == true){ 
@@ -47,7 +46,7 @@ if($buttonSelect == 300){
 				//insert the session value into database for future reference 
 				try {
 			    	$db = pdoConnect();
-			    	$sql = $db->prepare("UPDATE {$db_table_prefix}users SET session = ? WHERE id = ? ");
+			    	$sql = $db->prepare("UPDATE users SET session = ? WHERE id = ? ");
 					$sql->execute(array("$sessionVal", "$row->id"));
 					
 					/* Redirect to a different page*/	
@@ -106,7 +105,7 @@ if($userID['error'] == 0){
 	//delete the session on user db too
 	try {
     	$db = pdoConnect();
-    	$sql = $db->prepare("UPDATE {$db_table_prefix}users SET session = ? WHERE id = ? ");
+    	$sql = $db->prepare("UPDATE users SET session = ? WHERE id = ? ");
 		$sql->execute(array("", "$id"));
     	  
 		  /* Redirect to a different page*/	

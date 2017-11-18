@@ -38,17 +38,19 @@ function login(buttonSelect, id){
 	var password = $('#password').val();
 	
 	if(isBlank(username) || isBlank(password)){
-                $("<div title='Message Status!'>All fields are required!</div>").dialog();
+        $("<div title='Message Status!'>All fields are required!</div>").dialog();
 
 	}else{
 	
 	var data = {buttonSelect : buttonSelect, id : id, username : username, password : password}
     $.ajax({
            url: "inc/auth.php",
+           //url: 'script.php',
            type: "POST",
            data: data ,
 		   dataType: "JSON",
            success: function (result) {
+           		//alert(result);
 			   if(result.msg == "OK"){ window.location.href=result.page;}else{
 			   $("<div title='Message Status!'>"+result.msg+"</div>").dialog();}
            },

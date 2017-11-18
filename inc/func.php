@@ -14,7 +14,7 @@ $session = trim($_COOKIE['webtoone']); //get individual cookie
 
 try {
     $db = pdoConnect();
-    $sql = $db->prepare("SELECT `id`,`session`,`groupid` FROM {$db_table_prefix}users WHERE session = ? ");
+    $sql = $db->prepare("SELECT `id`,`session`,`groupid` FROM users WHERE session = ? ");
 	$sql->execute(array("$session"));
 	$row=$sql->fetch(PDO::FETCH_OBJ);
 

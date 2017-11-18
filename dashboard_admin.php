@@ -221,7 +221,7 @@ var dataString ={id:id,title:title,phone:phone,phoneserviceprovider:phoneservice
 				$(submitType+' #username').val(result.userData['username']);
 				$(submitType+' #fullname').val(result.userData['fullname']);
 				$(submitType+' #email').val(result.userData['email']);
-                                $(submitType+' #password').val("");
+                $(submitType+' #password').val("");
 				$(submitType+' #title').val(result.userData['title']);
 				$(submitType+' #phone').val(result.userData['phone']);
 				$(submitType+' #phoneserviceprovider').val(result.userData['phoneserviceprovider']);
